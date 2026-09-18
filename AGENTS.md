@@ -5,3 +5,7 @@ Read README.md and docs/VALIDATION.md before changes. The public website lives i
 Keep credentials, machine-specific SSH paths, business research and private files out of this public repository and image. Use the explicit Docker context allowlist. Preserve existing Caddy certificate volumes and unrelated Docker resources. Production uses ARM64; release images support ARM64 and AMD64.
 
 Run container checks for website/container changes. Server deployment changes require an integration check. Record actual tested revisions. Shell launchers and website.ps1 should offer equivalent local behavior.
+
+## Source context
+
+For dev/main source discovery, read docs/GRAFT.md and run scripts/graft.py with an explicit --ref matching this checkout. Production context requires clean main. The tool indexes only approved tracked source; use rg/direct reads for HTML, CSS, Markdown, deployment configuration, feature branches and missing results. Graphs are local hints; actual source and tests remain authoritative. Never run upstream init or install global hooks as part of this setup.

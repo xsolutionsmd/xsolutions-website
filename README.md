@@ -107,3 +107,7 @@ Restore Docker/Compose, the shared gateway configuration, certificate volumes, a
 The GHCR package must be public for anonymous downloads, matching the public source. No Actions secret is required. The `production` environment is limited to main. Main requires the container check and a pull request; repository administrators can change those settings.
 
 References: [GitHub container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry), [Docker multi-platform builds in Actions](https://docs.docker.com/build/ci/github-actions/multi-platform/).
+
+## Branch-aware source context
+
+Optional Graft source discovery is available through the repository-local Python CLI. See [setup, dev/main commands, coverage and removal](docs/GRAFT.md). It runs separately from website containers and preserves the existing release workflow.
