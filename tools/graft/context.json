@@ -1,6 +1,6 @@
 {
   "sourcePatterns": [
-    "xsolutions-site/*.js"
+    "**"
   ],
   "repository": "xsolutionsmd/xsolutions-website"
 }
