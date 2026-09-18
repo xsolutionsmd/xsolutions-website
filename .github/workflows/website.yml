@@ -50,7 +50,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/derek-sykes/xsolutions-website:sha-${{ github.sha }}
+          tags: ghcr.io/xsolutionsmd/xsolutions-website:sha-${{ github.sha }}
           build-args: REVISION=${{ github.sha }}
       - name: Publish the release instruction
         id: release
@@ -65,7 +65,7 @@ jobs:
             echo 'skip=true' >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          jq -n --arg revision "$GITHUB_SHA" --arg image "ghcr.io/derek-sykes/xsolutions-website@$IMAGE_DIGEST" \
+          jq -n --arg revision "$GITHUB_SHA" --arg image "ghcr.io/xsolutionsmd/xsolutions-website@$IMAGE_DIGEST" \
             '{revision:$revision,image:$image}' > deployment.json
           tag="release-$GITHUB_SHA"
           if gh release view "$tag" >/dev/null 2>&1; then

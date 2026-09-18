@@ -2,7 +2,7 @@
 # Installed root-owned; only follows this repository's published main releases.
 set -euo pipefail
 umask 077
-repo=Derek-Sykes/xsolutions-website
+repo=xsolutionsmd/xsolutions-website
 root=/opt/xsolutions
 state=/var/lib/xsolutions-deploy
 mkdir -p "$state"
@@ -62,7 +62,7 @@ p=Path(sys.argv[1])
 assert p.stat().st_size < 4096, 'Oversized release manifest'
 d=json.loads(p.read_text())
 assert re.fullmatch(r'[0-9a-f]{40}',d['revision']), 'Invalid revision'
-assert re.fullmatch(r'ghcr.io/derek-sykes/xsolutions-website@sha256:[0-9a-f]{64}',d['image']), 'Invalid image'
+assert re.fullmatch(r'ghcr.io/xsolutionsmd/xsolutions-website@sha256:[0-9a-f]{64}',d['image']), 'Invalid image'
 print(d['revision']); print(d['image'])
 PY
 )
