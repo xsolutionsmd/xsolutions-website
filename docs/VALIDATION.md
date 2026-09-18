@@ -91,3 +91,28 @@ Five automatic main releases succeeded, including the actual finished page. Work
 - Wildcard DNS covers future subdomains, while the current Caddy configuration serves only the explicitly configured sites. The gateway container stayed running during the company image update. Gateway routing changes and updater/Compose installation remain reviewed administrator operations; normal image releases update only their own website service.
 - The company and demo loaded in Chrome with their images and no desktop horizontal overflow. The demo's project controls responded and retained noindex headers; private source paths returned 404. Website presentation was unchanged, so prior mobile design QA remains applicable; this release did not repeat a mobile layout review or send contact messages.
 - Migration recovery copies were retained. The existing daily backup was extended to all three deployment directories and an archive was verified. These are configuration backups on the same VM, excluding certificate volumes; independent disk-loss recovery and production failure injection were not tested. See [gateway operations](../server/gateway/README.md).
+
+## September 18, 2026: optional Reticle local verification
+
+Source/tooling revision: `dba3541bae12067db21bad1076a354a64fa50e3b`. Windows host Node25.9.0, Docker Desktop
+Linux engine, Reticle server/browser3.1.0 and esbuild0.28.2 from package-lock.
+
+- `npm --prefix dev/reticle ci --ignore-scripts --no-fund --no-audit` succeeded.
+- `node --test dev/reticle/proxy.test.mjs`: 3 tests passed: local-only target,
+  foreign Host/Origin/WebSocket refusal, missing SDK token503, HTML-only injection,
+  original CSP retained and same-origin cookie/CSRF translation.
+- Real MCP initialization advertised nine tools; sessions were selected by exact
+  local preview URL. Positive presence/route checks and a deliberately absent
+  sentinel returning `verified:no` distinguish success from false confidence.
+- A temporary Alpine Docker build copied the real ignored build context and
+  asserted `dev/reticle`, `.reticle` and `.codex` were absent: passed.
+- `git diff --check` passed. Public templates, application source and release
+  workflows are unchanged. No main promotion, image release or live deployment.
+
+Company preview: existing local app8787 through4487. Reticle verified the coming-soon heading. Raw8787 remains uninstrumented. Codex project MCP configuration was recognized in the business workspace.
+
+Limits: browser traces give partial coverage; no registered application stores,
+source-line stamping, response-body capture, whole-app test rerun or measured
+token savings. Full navigation can miss requests even though SDK reconnects.
+This is a tooling acceptance check, not proof of every application behavior.
+Use [the guide](RETICLE.md) to reproduce the development setup.
