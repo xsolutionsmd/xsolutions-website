@@ -20,6 +20,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Check branch-bound source context
+        run: python3 scripts/test_graft.py
       - run: bash scripts/check.sh
       - run: python3 scripts/test-updater.py
 
@@ -68,11 +70,11 @@ jobs:
           jq -n --arg revision "$GITHUB_SHA" --arg image "ghcr.io/xsolutionsmd/xsolutions-website@$IMAGE_DIGEST" \
             '{revision:$revision,image:$image}' > deployment.json
           tag="release-$GITHUB_SHA"
-          if gh release view "$tag" >/dev/null 2>&1; then
-            gh release upload "$tag" deployment.json --clobber
-            gh release edit "$tag" --latest
+          if gh release view --repo "$GITHUB_REPOSITORY" "$tag" >/dev/null 2>&1; then
+            gh release upload --repo "$GITHUB_REPOSITORY" "$tag" deployment.json --clobber
+            gh release edit --repo "$GITHUB_REPOSITORY" "$tag" --latest
           else
-            gh release create "$tag" deployment.json --target "$GITHUB_SHA" --latest \
+            gh release create --repo "$GITHUB_REPOSITORY" "$tag" deployment.json --target "$GITHUB_SHA" --latest \
               --title "Website ${GITHUB_SHA:0:7}" --notes 'Tested website container. Oracle automatically applies this exact image and checks the live site.'
           fi
       - name: Wait for Oracle and verify the live revision
