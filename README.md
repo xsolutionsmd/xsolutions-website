@@ -7,7 +7,7 @@ The website at **https://xsolutionsmd.com**, served by a versioned website conta
 Install Git and Docker Desktop (Linux containers), then clone once:
 
 ```bash
-git clone --branch dev https://github.com/Derek-Sykes/xsolutions-website.git
+git clone --branch dev https://github.com/xsolutionsmd/xsolutions-website.git
 cd xsolutions-website
 bash start.sh
 ```
@@ -31,9 +31,9 @@ Update follows the currently selected `dev` or `main` branch. It refuses uncommi
 
 1. On the desktop, work on `dev` (or merge a feature branch into `dev`), check changes, commit and push.
 2. On the laptop, run `bash update.sh` or `.\website.ps1 update`, then test the local site.
-3. In [GitHub Pull requests](https://github.com/Derek-Sykes/xsolutions-website/pulls), create a PR with **base: main**, **compare: dev**.
+3. In [GitHub Pull requests](https://github.com/xsolutionsmd/xsolutions-website/pulls), create a PR with **base: main**, **compare: dev**.
 4. Wait for **Check website container** to pass, then merge. Keep the long-lived `dev` branch.
-5. Watch [Actions](https://github.com/Derek-Sykes/xsolutions-website/actions). **Publish and deploy to Oracle** succeeds after verifying the expected revision and page content over HTTPS.
+5. Watch [Actions](https://github.com/xsolutionsmd/xsolutions-website/actions). **Publish and deploy to Oracle** succeeds after verifying the expected revision and page content over HTTPS.
 
 Only main releases deploy. Dev pushes check the site and leave the live version alone. No Action merges branches automatically. Continue working on dev after release; merging main back into dev is optional unless main received separate changes.
 
