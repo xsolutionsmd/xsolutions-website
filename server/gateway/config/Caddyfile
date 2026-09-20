@@ -32,6 +32,10 @@ oasis.xsolutionsmd.com {
     reverse_proxy oasis-app:8080
 }
 
+oasis-abdul-dev.xsolutionsmd.com {
+    reverse_proxy oasis-abdul-dev-app:8080
+}
+
 # Gateway health is local to this container, never published on the VM.
 http://127.0.0.1:8082 {
     respond /healthz "ok" 200
